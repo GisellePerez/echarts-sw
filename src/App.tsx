@@ -1,14 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello world!</p>
-      </header>
+      <div>
+        <Router>
+          <header>Header</header>
+
+          <Route exact path="/echarts-sw" component={Home} />
+        </Router>
+      </div>
     </div>
   );
 }
