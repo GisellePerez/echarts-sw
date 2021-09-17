@@ -1,0 +1,23 @@
+section {
+  margin: 3rem 0;
+}
+
+section ul li {
+  width: fit-content;
+}
+
+section ul li a {
+  font-weight: normal;
+  color: #a0a0a0;
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+section ul li a:hover {
+  color: #ffeb3b;
+}
+
+section ul li a span {
+  margin-left: 0.5rem;
+}
