@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import ReactEcharts from 'echarts-for-react';
+import './Home.css';
 
 import getFilms from '../services/swapi/getFilms';
 import Film from '../types/film.types';
@@ -67,25 +68,36 @@ const Home = (): ReactElement => {
   }, []);
 
   return (
-    <div>
-      <h1>HOME</h1>
-
+    <main>
       {loading && 'Loading...'}
 
-      {!loading && films && films.length ? (
-        <ul>
-          {films.map((film: Film) => (
-            <li key={film.title}>
-              <Link to={`films/${getFilmId(film.url)}`}>
-                <h2>{film.title}</h2>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      {!loading && (
+        <>
+          <section>
+            <h2>Films list</h2>
+            {films && films.length ? (
+              <ul>
+                {films.map((film: Film) => (
+                  <li key={film.title}>
+                    <Link to={`echarts-sw/films/${getFilmId(film.url)}`}>
+                      <h4>
+                        {film.title}
+                        <span>&#8594;</span>
+                      </h4>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </section>
 
-      <ReactEcharts style={{ height: 400 }} option={option} />
-    </div>
+          <section>
+            <h2>Chart</h2>
+            <ReactEcharts style={{ height: 400 }} option={option} />
+          </section>
+        </>
+      )}
+    </main>
   );
 };
 
