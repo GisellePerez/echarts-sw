@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
+import Film from './components/Film';
 
 function App() {
   return (
@@ -10,7 +11,10 @@ function App() {
         <Router>
           <header>Header</header>
 
-          <Route exact path="/echarts-sw" component={Home} />
+          <Switch>
+            <Route exact path="/echarts-sw" component={Home} />
+            <Route path="/echarts-sw/film" component={Film} />
+          </Switch>
         </Router>
       </div>
     </div>
