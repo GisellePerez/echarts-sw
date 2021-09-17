@@ -6,7 +6,6 @@ const getCharacter = (url: string): Promise<CharacterType> => {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          console.log('character', data);
           resolve(data);
         } else {
           if (data.error) {
