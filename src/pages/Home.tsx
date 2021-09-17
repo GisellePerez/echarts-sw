@@ -79,7 +79,7 @@ const Home = (): ReactElement => {
               <ul>
                 {films.map((film: Film) => (
                   <li key={film.title}>
-                    <Link to={`echarts-sw/films/${getFilmId(film.url)}`}>
+                    <Link to={`films/${getFilmId(film.url)}`}>
                       <h4>
                         {film.title}
                         <span>&#8594;</span>
