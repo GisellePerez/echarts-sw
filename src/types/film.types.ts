@@ -1,4 +1,4 @@
-type Film = {
+type FilmType = {
   created: string;
   director: string;
   edited: string;
@@ -15,4 +15,4 @@ type Film = {
   vehicles: string[];
 };
 
-export default Film;
+export default FilmType;
