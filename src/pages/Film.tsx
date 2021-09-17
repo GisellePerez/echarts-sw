@@ -13,6 +13,7 @@ const Film = (): ReactElement => {
   const [film, setFilm] = useState<FilmType | null>(null);
 
   // Get film data by id
+  // TODO: maybe this call can be saved with context in the parent component
   const getFilmData = async (id: string) => {
     try {
       const filmData: FilmType = await getFilm(id);

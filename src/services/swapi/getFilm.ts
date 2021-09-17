@@ -9,7 +9,6 @@ const getFilm = (id: string): Promise<FilmType> => {
         if (data?.error) {
           reject(data?.error);
         } else {
-          console.log('film', data);
           resolve(data);
         }
       })
