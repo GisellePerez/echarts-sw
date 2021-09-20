@@ -2,25 +2,33 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './Film.css';
 
-import getFilm from '../services/swapi/getFilm';
 import FilmType from '../types/film.types';
+import { BASE_URL } from '../constants/constants';
 
-const Film = (): ReactElement => {
+type FilmProps = {
+  films: FilmType[];
+  loading: boolean;
+};
+
+const Film = ({ films, loading }: FilmProps): ReactElement => {
   // Get id in the url using useParams provided by react-router-dom
   const { id } = useParams<{ id: string }>();
 
-  // Initial states
+  // Initial state
   const [film, setFilm] = useState<FilmType | null>(null);
 
-  // Get film data by id
-  // TODO: maybe this call can be saved with context in the parent component
-  const getFilmData = async (id: string) => {
-    try {
-      const filmData: FilmType = await getFilm(id);
-      setFilm(filmData);
-    } catch (error) {
-      setFilm(null);
-    }
+  // Get film data by id. This function gets the current movie data by comparing the url from the api and the id used in the url params
+  const getFilmData = (filmId: string) => {
+    const filmsCopy: FilmType[] = films?.length ? [...films] : [];
+
+    const found =
+      filmsCopy && filmsCopy.length
+        ? filmsCopy.find(
+            (film: FilmType) => film.url === `${BASE_URL}/films/${filmId}/`
+          )
+        : null;
+
+    found && setFilm(found);
   };
 
   const formatDate = (filmDate: string): string => {
