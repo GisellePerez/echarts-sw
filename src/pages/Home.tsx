@@ -1,35 +1,23 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import './Home.css';
 
-import getFilms from '../services/swapi/getFilms';
 import Film from '../types/film.types';
 import { Link } from 'react-router-dom';
+import FilmType from '../types/film.types';
 
-const Home = (): ReactElement => {
+type HomeProps = {
+  films: FilmType[];
+  loading: boolean;
+};
+
+const Home = ({ films, loading }: HomeProps): ReactElement => {
   type FormattedFilmData = {
     name: string;
     value: number;
   };
 
-  // Initial states
-  const [loading, setLoading] = useState<boolean>(false);
-  const [films, setFilms] = useState<Film[]>([]);
-
-  // Get all films
-  const getFilmsData = async () => {
-    setLoading(true);
-
-    try {
-      const filmsData: Film[] = await getFilms();
-      setFilms(filmsData);
-      setLoading(false);
-    } catch (error) {
-      setFilms([]);
-      setLoading(false);
-    }
-  };
-
+  // This function formats the films data and returns the type of object the chart needs
   const formatFilmsData = (): FormattedFilmData[] => {
     const formattedFilmDataArray: FormattedFilmData[] =
       films && films.length
@@ -47,6 +35,7 @@ const Home = (): ReactElement => {
     return formattedFilmDataArray;
   };
 
+  // This function gets the film id from the url to create the routes to every movie
   const getFilmId = (filmUrl: string): string => {
     const regex = new RegExp(/(?<=films\/)./, 'gi');
     const match = filmUrl.match(regex);
@@ -63,10 +52,6 @@ const Home = (): ReactElement => {
     ],
   };
 
-  useEffect(() => {
-    getFilmsData();
-  }, []);
-
   return (
     <main>
       {loading && 'Loading...'}
@@ -79,7 +64,7 @@ const Home = (): ReactElement => {
               <ul>
                 {films.map((film: Film) => (
                   <li key={film.title}>
-                    <Link to={`films/${getFilmId(film.url)}`}>
+                    <Link to={`/echarts-sw/films/${getFilmId(film.url)}`}>
                       <h4>
                         {film.title}
                         <span>&#8594;</span>
