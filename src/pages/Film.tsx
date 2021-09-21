@@ -7,10 +7,9 @@ import { BASE_URL } from '../constants/constants';
 
 type FilmProps = {
   films: FilmType[];
-  loading: boolean;
 };
 
-const Film = ({ films, loading }: FilmProps): ReactElement => {
+const Film = ({ films }: FilmProps): ReactElement => {
   // Get id in the url using useParams provided by react-router-dom
   const { id } = useParams<{ id: string }>();
 

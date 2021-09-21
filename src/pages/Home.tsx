@@ -8,10 +8,9 @@ import FilmType from '../types/film.types';
 
 type HomeProps = {
   films: FilmType[];
-  loading: boolean;
 };
 
-const Home = ({ films, loading }: HomeProps): ReactElement => {
+const Home = ({ films }: HomeProps): ReactElement => {
   type FormattedFilmData = {
     name: string;
     value: number;
@@ -60,37 +59,31 @@ Personajes: ${charactersLength}`,
 
   return (
     <main>
-      {loading && 'Loading...'}
+      <section>
+        <h2>Films list</h2>
+        {films && films.length ? (
+          <ul>
+            {films.map((film: Film) => (
+              <li key={film.title}>
+                <Link to={`/echarts-sw/films/${getFilmId(film.url)}`}>
+                  <h4>
+                    {film.title}
+                    <span>&#8594;</span>
+                  </h4>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </section>
 
-      {!loading && (
-        <>
-          <section>
-            <h2>Films list</h2>
-            {films && films.length ? (
-              <ul>
-                {films.map((film: Film) => (
-                  <li key={film.title}>
-                    <Link to={`/echarts-sw/films/${getFilmId(film.url)}`}>
-                      <h4>
-                        {film.title}
-                        <span>&#8594;</span>
-                      </h4>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </section>
-
-          <section>
-            <h2>Chart</h2>
-            <ReactEcharts
-              style={{ height: '70vh', width: '100%' }}
-              option={option}
-            />
-          </section>
-        </>
-      )}
+      <section>
+        <h2>Chart</h2>
+        <ReactEcharts
+          style={{ height: '70vh', width: '100%' }}
+          option={option}
+        />
+      </section>
     </main>
   );
 };
