@@ -38,15 +38,20 @@ function App() {
         <Router>
           <Header />
 
-          {loading && 'loading...'}
+          {loading && (
+            <div className="spinner-wrapper">
+              <div className="spinner"></div>
+            </div>
+          )}
+
           {!loading ? (
             <>
               <Switch>
                 <Route exact path="/echarts-sw">
-                  <Home films={films} loading={loading} />
+                  <Home films={films} />
                 </Route>
                 <Route path="/echarts-sw/films/:id">
-                  <Film films={films} loading={loading} />
+                  <Film films={films} />
                 </Route>
               </Switch>
 
