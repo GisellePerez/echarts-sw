@@ -7,6 +7,8 @@ import Film from './pages/Film';
 
 import FilmType from './types/film.types';
 import getFilms from './services/swapi/getFilms';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -34,21 +36,22 @@ function App() {
     <div className="App">
       <div>
         <Router>
-          <header>
-            <h1>Star Wars Movies</h1>
-          </header>
+          <Header />
 
           {loading && 'loading...'}
-
           {!loading ? (
-            <Switch>
-              <Route exact path="/echarts-sw">
-                <Home films={films} loading={loading} />
-              </Route>
-              <Route path="/echarts-sw/films/:id">
-                <Film films={films} loading={loading} />
-              </Route>
-            </Switch>
+            <>
+              <Switch>
+                <Route exact path="/echarts-sw">
+                  <Home films={films} loading={loading} />
+                </Route>
+                <Route path="/echarts-sw/films/:id">
+                  <Film films={films} loading={loading} />
+                </Route>
+              </Switch>
+
+              <Footer />
+            </>
           ) : null}
         </Router>
       </div>

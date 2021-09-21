@@ -1,5 +1,27 @@
-main {
+main.film-content {
+  height: 70vh;
   color: #ffffff;
+  overflow-y: auto;
+}
+
+main.film-content a {
+  display: flex;
+  align-items: center;
+
+  color: #ffffff;
+  font-size: 1.5rem;
+
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+main.film-content a h2 {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+}
+
+main.film-content a:hover {
+  color: #ffeb3b;
 }
 
 h2 {

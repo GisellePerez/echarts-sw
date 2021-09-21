@@ -2,8 +2,27 @@ section {
   margin: 3rem 0;
 }
 
+section ul {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 1.5rem;
+
+  padding: 0;
+  max-width: 70vw;
+
+  list-style: none;
+}
+
 section ul li {
+  display: flex;
+  align-items: center;
+  grid-gap: 0.5rem;
+
   width: fit-content;
+  padding: 0 1rem;
+
+  border: 1px solid #ffeb3b;
+  border-radius: 1.25rem;
 }
 
 section ul li a {
@@ -14,10 +33,31 @@ section ul li a {
   transition: all 0.2s ease;
 }
 
-section ul li a:hover {
-  color: #ffeb3b;
+section ul li a h4 {
+  margin: 0.5rem;
 }
 
 section ul li a span {
   margin-left: 0.5rem;
+  transition: margin 0.3s ease;
+}
+
+section ul li a:hover {
+  color: #ffeb3b;
+}
+
+section ul li a:hover span {
+  margin-left: 1rem;
+}
+
+@media (min-width: 1358px) {
+  section ul {
+    max-width: 50vw;
+  }
+}
+
+@media (max-width: 768px) {
+  section ul {
+    max-width: 100%;
+  }
 }
