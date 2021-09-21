@@ -26,7 +26,8 @@ const Home = ({ films, loading }: HomeProps): ReactElement => {
               film.characters?.length && film.characters?.length;
 
             return {
-              name: `${film.title} - Personajes: ${charactersLength}`,
+              name: `${film.title} 
+Personajes: ${charactersLength}`,
               value: charactersLength,
             };
           })
@@ -48,6 +49,11 @@ const Home = ({ films, loading }: HomeProps): ReactElement => {
       {
         type: 'treemap',
         data: formatFilmsData(),
+        label: {
+          color: '#333',
+          fontSize: 14,
+          fontStyle: 'bold',
+        },
       },
     ],
   };
@@ -78,7 +84,10 @@ const Home = ({ films, loading }: HomeProps): ReactElement => {
 
           <section>
             <h2>Chart</h2>
-            <ReactEcharts style={{ height: 400 }} option={option} />
+            <ReactEcharts
+              style={{ height: '70vh', width: '100%' }}
+              option={option}
+            />
           </section>
         </>
       )}

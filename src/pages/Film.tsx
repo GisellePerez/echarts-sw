@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './Film.css';
 
 import FilmType from '../types/film.types';
@@ -47,10 +47,19 @@ const Film = ({ films, loading }: FilmProps): ReactElement => {
   }, [id]);
 
   return (
-    <main>
+    <main className="film-content">
       {film && (
         <div>
-          <h2>{film.title}</h2>
+          <div className="title-wrapper">
+            <Link to="/echarts-sw" className="back-link">
+              <span title="Volver" aria-label="Volver">
+                &#8592;
+              </span>
+
+              <h2>{film.title}</h2>
+            </Link>
+          </div>
+
           <ul>
             <li>
               <h3>Created: {formatDate(film.created && film.created)}</h3>
@@ -58,6 +67,18 @@ const Film = ({ films, loading }: FilmProps): ReactElement => {
 
             <li>
               <h3>Amount of characters: {film.characters?.length}</h3>
+            </li>
+
+            <li>
+              <h3>Episode: {film.episode_id}</h3>
+            </li>
+
+            <li>
+              <h3>Directed by: {film.director}</h3>
+            </li>
+
+            <li>
+              <h3>Produced by: {film.producer}</h3>
             </li>
           </ul>
         </div>
