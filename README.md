@@ -6,7 +6,7 @@ A simple app that displays a list of Star Wars movies and shows a chart with the
 
 ### Demo
 
-See deployed app here: https://giselleperez.github.io/echarts-sw/
+Yo can see the deployed app here: https://giselleperez.github.io/echarts-sw/
 
 ### Running in local
 
