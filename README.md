@@ -6,7 +6,7 @@ A simple app that displays a list of Star Wars movies and shows a chart with the
 
 ### Demo
 
-See deployed app here: https://giselleperez.github.io/echarts-sw/
+Demo app here: https://giselleperez.github.io/echarts-sw/
 
 ### Running in local
 
@@ -36,5 +36,7 @@ See deployed app here: https://giselleperez.github.io/echarts-sw/
 
 ### Deploy
 
-- Deployed using `gh-pages` with custom script, which will publish files to a gh-pages branch on GitHub
-- Process: after merging run `npm run deploy` and changes will be reflected on deployed app
+Deployed using `gh-pages` with custom script, which will publish files to a gh-pages branch on GitHub
+- Process:
+    1. Merge your branch to `master` 
+    2. Run `npm run deploy`. Changes will be reflected on deployed app
